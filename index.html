@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="styles.css">
+<!-- Created by Jeff Hochgesang on 18/1/18-->
+</head>
+<body>
+<h1>My Google Map</h1>
+<select onchange = "getMap(this)">
+  <option value="kaiserslautern">Kaiserslautern</option>
+  <option value="berlin">Berlin</option>
+  <option value="munich">Munich</option>
+  <option value="heidelberg">Heidelberg</option>
+</select>
+<br><br>
+<div id="map" style="width:1260px;height:780px;background:yellow"></div>
+<script>
+  function myMap(lat, long) {
+    if(lat == null){
+      lat = 49.4401;
+      long = 7.7491;
+    }
+    var mapCanvas = document.getElementById("map");
+    var mapOptions = {
+        center: new google.maps.LatLng(lat, long),
+        zoom: 10
+    };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    }
+  function getMap(e) {
+    if (e.value == "berlin"){
+      lat = 52.52;
+      long = 13.405;
+
+    } else if (e.value == "munich"){
+      lat = 48.1351;
+      long = 11.582;
+
+    } else if (e.value == "heidelberg"){
+      lat = 49.3988
+      long = 8.6742
+
+    } else if (e.value == "kaiserslautern") {
+      lat = 49.4401;
+      long = 7.7491;
+
+    }
+    myMap(lat, long);
+  }
+</script> <!-- myMap and getMap -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByw3nHEKNH7bcUy9kQkHBMGFCAVPmBPaA&callback=myMap">
+</script>
+<script>
+  function location(e){
+    var lat = prompt("What is your latitude?")
+    var long = prompt("What is your longitude?")
+}    myMap(lat, long);
+
+
+</script>
+</body>
+<html>
